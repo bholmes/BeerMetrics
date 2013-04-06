@@ -4,6 +4,7 @@ using System.Drawing;
 
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using BeerMetricsGeneralLibrary;
 
 namespace BeerMetricsIOSClient
 {
@@ -45,7 +46,11 @@ namespace BeerMetricsIOSClient
 				if (t.Result != null)
 				{
 					//Console.WriteLine("Scanned Barcode: " + t.Result.Text);
-					NavigationController.PushViewController (new UIViewController (), false);
+					var newCtrl = new UIViewController ();
+					var beer = Engine.Service.LookupBeerFromScanCode (t.Result.Text);
+					newCtrl.Title = beer.Name;
+					newCtrl.View.BackgroundColor = UIColor.White;
+					NavigationController.PushViewController (newCtrl, false);
 				}
 			}, System.Threading.Tasks.TaskScheduler.FromCurrentSynchronizationContext ());
 		}
