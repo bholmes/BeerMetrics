@@ -100,6 +100,10 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="WelcomeViewController.cs" />
+    <Compile Include="WelcomeViewController.designer.cs">
+      <DependentUpon>WelcomeViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -111,5 +115,9 @@
       <Project>{26A5976C-3CBA-436F-A57E-64FFA47E68C4}</Project>
       <Name>BeerMetricsGeneralMobile_ios</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="WelcomeViewController_iPhone.xib" />
+    <InterfaceDefinition Include="WelcomeViewController_iPad.xib" />
   </ItemGroup>
 </Project>
