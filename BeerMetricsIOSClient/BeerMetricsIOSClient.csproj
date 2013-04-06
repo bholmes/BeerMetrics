@@ -104,6 +104,14 @@
     <Compile Include="WelcomeViewController.designer.cs">
       <DependentUpon>WelcomeViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginViewController.cs" />
+    <Compile Include="LoginViewController.designer.cs">
+      <DependentUpon>LoginViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainUserController.cs" />
+    <Compile Include="MainUserController.designer.cs">
+      <DependentUpon>MainUserController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -119,5 +127,9 @@
   <ItemGroup>
     <InterfaceDefinition Include="WelcomeViewController_iPhone.xib" />
     <InterfaceDefinition Include="WelcomeViewController_iPad.xib" />
+    <InterfaceDefinition Include="LoginViewController_iPhone.xib" />
+    <InterfaceDefinition Include="LoginViewController_iPad.xib" />
+    <InterfaceDefinition Include="MainUserController_iPhone.xib" />
+    <InterfaceDefinition Include="MainUserController_iPad.xib" />
   </ItemGroup>
 </Project>

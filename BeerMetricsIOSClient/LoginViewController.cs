@@ -7,15 +7,18 @@ using MonoTouch.UIKit;
 
 namespace BeerMetricsIOSClient
 {
-	public partial class WelcomeViewController : UIViewController
+	public partial class LoginViewController : UIViewController
 	{
+		UINavigationController _navCtrl;
+
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
 
-		public WelcomeViewController ()
-			: base (UserInterfaceIdiomIsPhone ? "WelcomeViewController_iPhone" : "WelcomeViewController_iPad", null)
+		public LoginViewController (UINavigationController navCtrl)
+			: base (UserInterfaceIdiomIsPhone ? "LoginViewController_iPhone" : "LoginViewController_iPad", null)
 		{
+			_navCtrl = navCtrl;
 		}
 		
 		public override void DidReceiveMemoryWarning ()
@@ -35,12 +38,14 @@ namespace BeerMetricsIOSClient
 
 		partial void OnLogin (MonoTouch.Foundation.NSObject sender)
 		{
-			PresentModalViewController (new LoginViewController (NavigationController), true);
+			_navCtrl.PushViewController (new MainUserController (), false);
+
+			this.DismissModalViewControllerAnimated (true);
 		}
 
-		partial void OnNewUser (MonoTouch.Foundation.NSObject sender)
+		partial void OnCancel (MonoTouch.Foundation.NSObject sender)
 		{
-
+			this.DismissModalViewControllerAnimated (true);
 		}
 	}
 }
