@@ -37,6 +37,18 @@ namespace BeerMetricsIOSClient
 		{
 			NavigationController.PopViewControllerAnimated (true);
 		}
+
+		partial void OnScan (MonoTouch.Foundation.NSObject sender)
+		{
+			var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+			scanner.Scan().ContinueWith(t => {   
+				if (t.Result != null)
+				{
+					//Console.WriteLine("Scanned Barcode: " + t.Result.Text);
+					NavigationController.PushViewController (new UIViewController (), false);
+				}
+			}, System.Threading.Tasks.TaskScheduler.FromCurrentSynchronizationContext ());
+		}
 	}
 }
 

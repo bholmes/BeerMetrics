@@ -13,6 +13,9 @@ namespace BeerMetricsIOSClient
 	{
 		[Action ("OnLogout:")]
 		partial void OnLogout (MonoTouch.Foundation.NSObject sender);
+
+		[Action ("OnScan:")]
+		partial void OnScan (MonoTouch.Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
