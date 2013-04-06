@@ -7,7 +7,7 @@ using MonoTouch.UIKit;
 
 namespace BeerMetricsIOSClient
 {
-	public partial class LoginViewController : UIViewController
+	public partial class NewUserViewController : UIViewController
 	{
 		UINavigationController _navCtrl;
 
@@ -15,8 +15,8 @@ namespace BeerMetricsIOSClient
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
 
-		public LoginViewController (UINavigationController navCtrl)
-			: base (UserInterfaceIdiomIsPhone ? "LoginViewController_iPhone" : "LoginViewController_iPad", null)
+		public NewUserViewController (UINavigationController navCtrl)
+			: base (UserInterfaceIdiomIsPhone ? "NewUserViewController_iPhone" : "NewUserViewController_iPad", null)
 		{
 			_navCtrl = navCtrl;
 		}
@@ -32,21 +32,26 @@ namespace BeerMetricsIOSClient
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-
+			
 			_userNameField.ShouldReturn = delegate {
 				_passwordField.BecomeFirstResponder ();
 				return true;
 			};
 
 			_passwordField.ShouldReturn = delegate {
-				return _passwordField.ResignFirstResponder ();
+				_retypePasswordField.BecomeFirstResponder ();
+				return true;
+			};
+			
+			_retypePasswordField.ShouldReturn = delegate {
+				return _retypePasswordField.ResignFirstResponder ();
 			};
 		}
 
-		partial void OnLogin (MonoTouch.Foundation.NSObject sender)
+		partial void OnCreateNew (MonoTouch.Foundation.NSObject sender)
 		{
 			_navCtrl.PushViewController (new MainUserController (), false);
-
+			
 			this.DismissModalViewControllerAnimated (true);
 		}
 

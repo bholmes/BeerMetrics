@@ -32,6 +32,11 @@ namespace BeerMetricsIOSClient
 			
 			NavigationItem.HidesBackButton = true;
 		}
+
+		partial void OnLogout (MonoTouch.Foundation.NSObject sender)
+		{
+			NavigationController.PopViewControllerAnimated (true);
+		}
 	}
 }
 

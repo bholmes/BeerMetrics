@@ -40,7 +40,7 @@ namespace BeerMetricsIOSClient
 
 		partial void OnNewUser (MonoTouch.Foundation.NSObject sender)
 		{
-
+			PresentModalViewController (new NewUserViewController (NavigationController), true);
 		}
 	}
 }
